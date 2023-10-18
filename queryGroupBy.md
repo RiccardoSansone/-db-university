@@ -21,9 +21,9 @@ GROUP BY `exams`.`date`;
 ```
 <!-- Contare quanti corsi di laurea ci sono per ogni dipartimento -->
 ```sql
-SELECT COUNT(id), `departments`.`name`
+SELECT COUNT(*), `departments`.`name`
 FROM `degrees`
 JOIN `departments`
-ON `degrees`.`departments_id` = `departments`.`id`
+ON `degrees`.`department_id` = `departments`.`id`
 GROUP BY `departments`.`name`;
 ```
