@@ -18,7 +18,7 @@ AND `departments`.`name` = 'Dipartimento di Neuroscienze';
 ```
 <!-- Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44) -->
 ```sql
-SELECT `degrees`.`name`, `teachers`,`name`, `teachers`.`surname`
+SELECT `degrees`.`name`, `teachers`.`name`, `teachers`.`surname`
 FROM `courses`
 JOIN `degrees` ON `courses`.`degree_id` = `degrees`.`id`                              
 JOIN `course_teacher` ON `course_teacher`.`course_id` = `courses`.`id`
@@ -28,6 +28,11 @@ AND `teachers`.`surname` = 'Amato';
 ```
 <!-- Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e nome -->
 ```sql
+SELECT *, `degrees`.`name`, `departments`.`name`
+FROM `students`
+JOIN `degrees` ON `students`.`degree_id` = `degrees`.`id`
+JOIN `departments` ON `degrees`.`department_id` = `departments`.`id`
+ORDER BY `students`.`surname` ASC;
 ```
 <!-- Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti -->
 ```sql
